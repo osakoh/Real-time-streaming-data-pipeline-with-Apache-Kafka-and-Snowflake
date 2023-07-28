@@ -1,0 +1,5 @@
+export SNOWFLAKE_EXAMPLE_USER=<sample_user>
+export SNOWFLAKE_EXAMPLE_ACCOUNT=<account_name>
+export SNOWFLAKE_EXAMPLE_PASSWORD=<your_password>
+export SNOWFLAKE_EXAMPLE_WAREHOUSE=<warehouse_to_use>
+export SNOWFLAKE_EXAMPLE_ROLE=<role>
