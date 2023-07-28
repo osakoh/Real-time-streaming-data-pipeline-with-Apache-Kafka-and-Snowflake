@@ -11,6 +11,9 @@
 * [Apache Kafka](https://kafka.apache.org/downloads):  distributed streaming platform used to build real-time data pipelines and streaming applications
 
 ## Installation
-Check [GeeksforGeeks](https://www.geeksforgeeks.org/how-to-install-and-run-apache-kafka-on-windows/) for installation of Apache Kafka and configuration of zookeeper.properties and server.properties files.
+* Check [GeeksforGeeks](https://www.geeksforgeeks.org/how-to-install-and-run-apache-kafka-on-windows/) for installation of Apache Kafka and configuration of zookeeper.properties and server.properties files.
+* Configure the `zookeeper.properties` and `server.properties` file accordingly
 
 ## Usage
+* Locate the [sample_env](./scripts/sample_env) script in the scripts folder and replace the dummy environment variables.
+* Run the [initial_setup.py](./utils/sf_initial_setup.py) script to create the database and schema.
