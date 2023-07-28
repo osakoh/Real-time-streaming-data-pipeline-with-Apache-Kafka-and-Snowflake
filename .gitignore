@@ -120,7 +120,8 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.envs/.snowflake-local*
+scripts/local_env
+.env-local
 .env
 .venv
 env/
