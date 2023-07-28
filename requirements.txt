@@ -2,7 +2,7 @@ apache-airflow==2.6.3
 boto3==1.28.11
 botocore==1.31.11
 Faker==19.2.0
-kafka_python==2.0.2
+kafka-python==2.0.0
 pandas==2.0.3
 pyspark==3.4.1
 snowflake_connector_python==3.0.4

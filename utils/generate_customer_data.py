@@ -18,18 +18,22 @@ def generate_customer_data(num_of_customers):
     # initializes an empty dictionary named customers, which will be used to store the generated customer data
     customers = dict()
     #  name of the Kafka topic where the data will be sent
-    topic_name = 'sales-data'
+    topic_name = 'shop-data'
 
     # creates an instance of the KafkaProducer class with the bootstrap servers set to ['localhost:9092']
     # sets the value serializer to convert the Python object into a JSON-encoded string.
-    producer = KafkaProducer(bootstrap_servers=['localhost:9092'], value_serializer=lambda x: dumps(x).encode('utf-8'))
+    producer = KafkaProducer(bootstrap_servers=['localhost:9092'],
+                             value_serializer=lambda x: dumps(x).encode('utf-8'),
+                             # https://stackoverflow.com/questions/60092690/nobrokersavailable-nobrokersavailable-error-in-kafka#60096382
+                             api_version=(0, 10, 2)
+                             )
 
     for customers_id in range(num_of_customers):
         # Create transaction date
         #  creates a datetime object d1 by parsing the string '1/1/2021', using the format '%m/%d/%Y' (month/day/year)
-        first_date = datetime.strptime(f'1/1/2022', '%m/%d/%Y')
+        first_date = datetime.strptime(f'1/1/2022', '%d/%m/%Y')
         # creates a datetime object d2 by parsing the string '8/10/2021', using the format '%m/%d/%Y' (month/day/year)
-        second_date = datetime.strptime(f'20/12/2022', '%m/%d/%Y')
+        second_date = datetime.strptime(f'20/12/2022', '%d/%m/%Y')
         # generates a random date between d1 and d2 using the date_between() method from the fake object
         transaction_date = fake.date_between(first_date, second_date)
 
@@ -64,5 +68,8 @@ def generate_customer_data(num_of_customers):
 
         # sends the generated customer data as a JSON-encoded string to the Kafka topic
         producer.send(topic_name, value=dumps(customers))
-        # runs every 3 secs
-        sleep(3)
+        # runs every 5 secs
+        sleep(5)
+
+
+generate_customer_data(200)
